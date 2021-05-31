@@ -20,10 +20,9 @@ async def create_pool(loop, **kwargs):
         password=kwargs['password'],
         db=kwargs['db'],
         charset=kwargs.get('charset', 'utf8mb4'),
-        autocmmmit=kwargs.get('autocommit', True),
+        autocommit=kwargs.get('autocommit', True),
         maxsize=kwargs.get('maxsize', 10),
         minsize=kwargs.get('minsize', 1),
-        echo=True,
         loop=loop
     )
 
@@ -267,6 +266,7 @@ class Model(dict, metaclass=ModelMetaclass):
 
     async def remove(self):
         args = [self.get_value(self.__primary_key__)]
+        print('args: %s' % args)
         rows = await execute(self.__delete__, args)
         if rows != 1:
             logging.warning('Failed to remove by primary key: affected rows %s' % rows)
