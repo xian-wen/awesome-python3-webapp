@@ -19,7 +19,7 @@ async def create_pool(loop, **kwargs):
         user=kwargs['user'],
         password=kwargs['password'],
         db=kwargs['db'],
-        charset=kwargs.get('charset', 'utf8'),
+        charset=kwargs.get('charset', 'utf8mb4'),
         autocmmmit=kwargs.get('autocommit', True),
         maxsize=kwargs.get('maxsize', 10),
         minsize=kwargs.get('minsize', 1),
@@ -159,6 +159,7 @@ class ModelMetaclass(type):
 class Model(dict, metaclass=ModelMetaclass):
 
     def __init__(self, **kwargs):
+        # ** 传入关键字参数
         super().__init__(**kwargs)
 
     def __getattr__(self, key):
