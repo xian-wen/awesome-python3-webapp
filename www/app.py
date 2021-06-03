@@ -2,7 +2,6 @@
 # @author xian_wen
 # @date 5/26/2021 2:06 PM
 
-import asyncio
 import json
 import logging
 import os
@@ -141,22 +140,17 @@ def datetime_filter(t):
     return u'%s年%s月%s日' % (dt.year, dt.month, dt.day)
 
 
-async def init():
+async def init_db(app):
     # If on Linux, use another user instead of 'root'
     await orm.create_pool(host='localhost', port=3306, user='root', password='password', db='awesome')
-    app = web.Application(middlewares=[
-        logger_factory,
-        response_factory
-    ])
-    init_jinja2(app, filters=dict(datatime=datetime_filter))
-    add_routes(app, 'handlers')
-    add_static(app)
-    web.run_app(app, host='localhost', port=9000)
 
 
-# RuntimeError: Event loop is closed
-# asyncio.run(init())
-
-loop = asyncio.get_event_loop()
-loop.run_until_complete(init())
-loop.run_forever()
+app = web.Application(middlewares=[
+    logger_factory,
+    response_factory
+])
+init_jinja2(app, filters=dict(datatime=datetime_filter))
+add_routes(app, 'handlers')
+add_static(app)
+app.on_startup.append(init_db)
+web.run_app(app, host='localhost', port=9000)

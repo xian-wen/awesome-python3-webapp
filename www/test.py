@@ -9,8 +9,12 @@ from models import User
 
 async def test():
     await orm.create_pool(user='root', password='password', db='awesome')
-    u = User(name='Test', email='test@example.com', password='1234567890', image='abut:blank')
-    await u.save()
+    a = User(name='Administrator', email='admin@example.com', password='1234567890', image='abut:blank')
+    x = User(name='xian_wen', email='xian_wen@example.com', password='1234567890', image='abut:blank')
+    t = User(name='Test', email='test@example.com', password='1234567890', image='abut:blank')
+    await a.save()
+    await x.save()
+    await t.save()
 
 
 loop = asyncio.get_event_loop()

@@ -188,7 +188,7 @@ class RequestHandler(object):
                     for k, v in parse.parse_qs(qs, True).items():
                         kwargs[k] = v[0]
         if kwargs is None:
-            kwargs = dict(**request.mathch_info)
+            kwargs = dict(**request.match_info)
         else:
             if not self.__has_var_kwarg and self.__named_kwargs:
                 # Remove all unnamed kwargs
@@ -237,7 +237,7 @@ def add_route(app, fn):
         # GET / => fn(*args, **kwargs)
         'Add route %s %s => %s(%s)' % (method, path, fn.__name__, ', '.join(inspect.signature(fn).parameters.keys())))
     # Attention: handler is converted to coroutine internally when it is a regular function
-    app.route.add_route(method, path, RequestHandler(app, fn))
+    app.router.add_route(method, path, RequestHandler(app, fn))
 
 
 def add_routes(app, module_name):

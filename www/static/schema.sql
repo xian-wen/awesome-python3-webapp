@@ -4,46 +4,40 @@ CREATE DATABASE awesome;
 
 USE awesome;
 
-CREATE TABLE users
-(
-    id         varchar(50) NOT NULL,
-    email      varchar(50) NOT NULL,
-    password   varchar(50) NOT NULL,
-    admin      bool        NOT NULL,
-    name       varchar(50) NOT NULL,
-    image      varchar(50) NOT NULL,
-    created_at real        NOT NULL,
+CREATE TABLE users (
+    id         VARCHAR(50) NOT NULL,
+    email      VARCHAR(50) NOT NULL,
+    password   VARCHAR(50) NOT NULL,
+    admin      BOOL        NOT NULL,
+    name       VARCHAR(50) NOT NULL,
+    image      VARCHAR(50) NOT NULL,
+    created_at REAL        NOT NULL,
     UNIQUE KEY idx_email (email),
     KEY idx_created_at (created_at),
     PRIMARY KEY (id)
-) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb4;
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 
-CREATE TABLE blogs
-(
-    id         varchar(50)  NOT NULL,
-    user_id    varchar(50)  NOT NULL,
-    user_name  varchar(50)  NOT NULL,
-    user_image varchar(500) NOT NULL,
-    name       varchar(50)  NOT NULL,
-    summary    varchar(200) NOT NULL,
-    content    mediumtext   NOT NULL,
-    created_at real         NOT NULL,
+CREATE TABLE blogs (
+    id         VARCHAR(50)  NOT NULL,
+    user_id    VARCHAR(50)  NOT NULL,
+    user_name  VARCHAR(50)  NOT NULL,
+    user_image VARCHAR(500) NOT NULL,
+    name       VARCHAR(50)  NOT NULL,
+    summary    VARCHAR(200) NOT NULL,
+    content    MEDIUMTEXT   NOT NULL,
+    created_at REAL         NOT NULL,
     KEY idx_created_at (created_at),
     PRIMARY KEY (id)
-) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb4;
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 
-CREATE TABLE comments
-(
-    id         varchar(50)  NOT NULL,
-    blog_id    varchar(50)  NOT NULL,
-    user_id    varchar(50)  NOT NULL,
-    user_name  varchar(50)  NOT NULL,
-    user_image varchar(500) NOT NULL,
-    content    mediumtext   NOT NULL,
-    created_at real         NOT NULL,
+CREATE TABLE comments (
+    id         VARCHAR(50)  NOT NULL,
+    blog_id    VARCHAR(50)  NOT NULL,
+    user_id    VARCHAR(50)  NOT NULL,
+    user_name  VARCHAR(50)  NOT NULL,
+    user_image VARCHAR(500) NOT NULL,
+    content    MEDIUMTEXT   NOT NULL,
+    created_at REAL         NOT NULL,
     KEY idx_created_at (created_at),
     PRIMARY KEY (id)
-) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb4;
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
