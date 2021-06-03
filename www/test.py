@@ -9,9 +9,9 @@ from models import User
 
 async def test():
     await orm.create_pool(user='root', password='password', db='awesome')
-    a = User(name='Administrator', email='admin@example.com', password='1234567890', image='abut:blank')
-    x = User(name='xian_wen', email='xian_wen@example.com', password='1234567890', image='abut:blank')
-    t = User(name='Test', email='test@example.com', password='1234567890', image='abut:blank')
+    a = User(name='Administrator', email='admin@example.com', password='1234567890', image='about:blank')
+    x = User(name='xian_wen', email='xian_wen@example.com', password='1234567890', image='about:blank')
+    t = User(name='Test', email='test@example.com', password='1234567890', image='about:blank')
     await a.save()
     await x.save()
     await t.save()

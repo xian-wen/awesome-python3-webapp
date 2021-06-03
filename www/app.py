@@ -13,6 +13,7 @@ from jinja2 import Environment, FileSystemLoader
 
 import orm
 from coroweb import add_routes, add_static
+from config import configs
 
 logging.basicConfig(level=logging.INFO)
 
@@ -142,7 +143,13 @@ def datetime_filter(t):
 
 async def init_db(app):
     # If on Linux, use another user instead of 'root'
-    await orm.create_pool(host='localhost', port=3306, user='root', password='password', db='awesome')
+    await orm.create_pool(
+        host=configs.db.host,
+        port=configs.db.port,
+        user=configs.db.user,
+        password=configs.db.password,
+        db=configs.db.database
+    )
 
 
 app = web.Application(middlewares=[
