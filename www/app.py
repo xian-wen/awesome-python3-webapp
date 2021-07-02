@@ -89,6 +89,7 @@ async def response_factory(app, handler):
             return resp
         # Response classes are dict like objects
         if isinstance(r, dict):
+            # 模板参数
             template = r.get('__template__')
             if template is None:
                 resp = web.Response(
@@ -156,7 +157,7 @@ app = web.Application(middlewares=[
     logger_factory,
     response_factory
 ])
-init_jinja2(app, filters=dict(datatime=datetime_filter))
+init_jinja2(app, filters=dict(datetime=datetime_filter))
 add_routes(app, 'handlers')
 add_static(app)
 app.on_startup.append(init_db)
