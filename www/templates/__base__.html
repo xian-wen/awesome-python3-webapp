@@ -5,34 +5,50 @@
     {% block meta %}<!-- block meta --> {% endblock %}
     <title>{% block title %} ? {% endblock %} - Awesome Python Webapp</title>
     <link rel="stylesheet" href="/static/css/uikit.min.css">
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/vue.global.prod.js"></script>
     <script src="/static/js/uikit.min.js"></script>
     <script src="/static/js/uikit-icons.min.js"></script>
     {% block beforehead %}<!-- before head --> {% endblock %}
 </head>
 <body>
 <nav class="uk-navbar-container uk-margin-bottom" uk-navbar>
-    <div class="uk-navbar-left">
+    <div class="uk-navbar-left uk-margin-left">
         <a href="/" class="uk-navbar-item uk-logo">Awesome</a>
         <ul class="uk-navbar-nav">
-            <li><a href="/"><i uk-icon="home"></i> 日志</a></li>
-            <li><a target="_blank" href=""><i uk-icon="album"></i> 教程</a></li>
-            <li><a target="_blank" href="https://github.com/xian-wen/awesome-python3-webapp"><i uk-icon="code"></i>源码</a></li>
+            <li><a href="/">
+                <span uk-icon="home"></span><span class="uk-text-middle"> 日志</span>
+            </a></li>
+            <li><a target="_blank" href="">
+                <span uk-icon="album"></span><span class="uk-text-middle"> 教程</span>
+            </a></li>
+            <li><a target="_blank" href="https://github.com/xian-wen/awesome-python3-webapp">
+                <span uk-icon="code"></span><span class="uk-text-middle"> 源码</span>
+            </a></li>
         </ul>
     </div>
-    <div class="uk-navbar-right">
+    <div class="uk-navbar-right uk-margin-right">
         <ul class="uk-navbar-nav">
             {% if __user__ %}
             <li>
-                <a href=""><i class="uk-icon-user"></i> {{ __user__.name }}</a>
+                <a href="#">
+                    <span uk-icon="user"></span><span class="uk-text-middle"> {{ __user__.name }}</span>
+                </a>
                 <div class="uk-navbar-dropdown">
                     <ul class="uk-nav uk-navbar-dropdown-nav">
-                        <li><a href="/signout"><i uk-icon="sign-out"></i> 退出</a></li>
+                        <li><a href="/signout">
+                            <span uk-icon="sign-out"></span><span class="uk-text-middle"> 退出</span>
+                        </a></li>
                     </ul>
                 </div>
             </li>
             {% else %}
-            <li><a href="/signin"><i uk-icon="sign-in"></i> 登录</a></li>
-            <li><a href="/register"><i uk-icon="pencil"></i> 注册</a></li>
+            <li><a href="/signin">
+                <span uk-icon="sign-in"></span><span class="uk-text-middle"> 登录</span>
+            </a></li>
+            <li><a href="/register">
+                <span uk-icon="file-edit"></span><span class="uk-text-middle"> 注册</span>
+            </a></li>
             {% endif %}
         </ul>
     </div>
