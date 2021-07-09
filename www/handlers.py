@@ -46,6 +46,7 @@ def make_cookie(user):
     :return: response with cookie
     """
     r = web.Response()
+    # httpOnly：使 Cookie 不被 JavaScript 读取，防止用户登录信息被引入的第三方恶意 js 代码窃取
     r.set_cookie(COOKIE_NAME, user2cookie(user, 86400), max_age=86400, httponly=True)  # 24 h
     user.password = '******'
     r.content_type = 'application/json'

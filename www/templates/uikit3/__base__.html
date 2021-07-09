@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block meta %}<!-- block meta --> {% endblock %}
+    <title>{% block title %} ? {% endblock %} - Awesome Python Webapp</title>
+    <link rel="stylesheet" href="/static/css/uikit.min.css">
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/vue.global.prod.js"></script>
+    <script src="/static/js/uikit.min.js"></script>
+    <script src="/static/js/uikit-icons.min.js"></script>
+    {% block beforehead %}<!-- before head --> {% endblock %}
+</head>
+<body>
+<nav class="uk-navbar-container uk-margin-bottom" uk-navbar>
+    <div class="uk-navbar-left uk-margin-left">
+        <a href="/"
+           class="uk-navbar-item uk-logo"
+        >Awesome</a>
+        <ul class="uk-navbar-nav">
+            <li>
+                <a href="/">
+                    <span uk-icon="home"></span>
+                    <span class="uk-text-middle"> 日志</span>
+                </a>
+            </li>
+            <li>
+                <a target="_blank"
+                   href=""
+                >
+                    <span uk-icon="album"></span>
+                    <span class="uk-text-middle"> 教程</span>
+                </a>
+            </li>
+            <li>
+                <a target="_blank"
+                   href="https://github.com/xian-wen/awesome-python3-webapp"
+                >
+                    <span uk-icon="code"></span>
+                    <span class="uk-text-middle"> 源码</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="uk-navbar-right uk-margin-right">
+        <ul class="uk-navbar-nav">
+            {% if __user__ %}
+            <li>
+                <a href="#0">
+                    <span uk-icon="user"></span>
+                    <span class="uk-text-middle"> {{ __user__.name }}</span>
+                </a>
+                <div class="uk-navbar-dropdown">
+                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                        <li>
+                            <a href="/signout">
+                                <span uk-icon="sign-out"></span>
+                                <span class="uk-text-middle"> 退出</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            {% else %}
+            <li>
+                <a href="/signin">
+                    <span uk-icon="sign-in"></span>
+                    <span class="uk-text-middle"> 登录</span>
+                </a>
+            </li>
+            <li>
+                <a href="/register">
+                    <span uk-icon="file-edit"></span>
+                    <span class="uk-text-middle"> 注册</span>
+                </a>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
+
+<div class="uk-container">
+    <div uk-grid>
+        {% block content %}
+        <!-- content -->
+        {% endblock %}
+    </div>
+</div>
+
+<div class="uk-margin-large-top"
+     style="background-color: #eee; border-top: 1px solid #ccc;"
+>
+    <div class="uk-container uk-text-center">
+        <div class="uk-margin-top uk-margin-bottom">
+            <p>
+                <a target="_blank"
+                   href="https://github.com/xian-wen"
+                   class="uk-icon-button"
+                   uk-icon="github"
+                ></a>
+                <a target="_blank"
+                   href=""
+                   class="uk-icon-button"
+                   uk-icon="linkedin"
+                ></a>
+                <a target="_blank"
+                   href=""
+                   class="uk-icon-button"
+                   uk-icon="twitter"
+                ></a>
+            </p>
+            <p>
+                Powered by <a href="">Awesome Python Webapp</a>.
+                Copyright &copy; 2021.
+                [<a href="">Manage</a>]
+            </p>
+            <p>
+                <a target="_blank"
+                   href=""
+                >www.yinxianwen.com</a>.
+                All rights reserved.
+            </p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

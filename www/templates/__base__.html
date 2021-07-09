@@ -4,74 +4,123 @@
     <meta charset="UTF-8">
     {% block meta %}<!-- block meta --> {% endblock %}
     <title>{% block title %} ? {% endblock %} - Awesome Python Webapp</title>
-    <link rel="stylesheet" href="/static/css/uikit.min.css">
+    <link rel="stylesheet" href="/static/css/uikit.almost-flat.min.css">
     <script src="/static/js/jquery.min.js"></script>
-    <script src="/static/js/vue.global.prod.js"></script>
+    <script src="/static/js/crypto-js.min.js"></script>
     <script src="/static/js/uikit.min.js"></script>
-    <script src="/static/js/uikit-icons.min.js"></script>
+    <script src="/static/js/vue.min.js"></script>
     {% block beforehead %}<!-- before head --> {% endblock %}
 </head>
 <body>
-<nav class="uk-navbar-container uk-margin-bottom" uk-navbar>
-    <div class="uk-navbar-left uk-margin-left">
-        <a href="/" class="uk-navbar-item uk-logo">Awesome</a>
+<nav class="uk-navbar uk-navbar-attached uk-margin-bottom">
+    <div class="uk-container uk-container-center">
+        <a class="uk-navbar-brand"
+           href="/"
+        >Awesome</a>
         <ul class="uk-navbar-nav">
-            <li><a href="/">
-                <span uk-icon="home"></span><span class="uk-text-middle"> 日志</span>
-            </a></li>
-            <li><a target="_blank" href="">
-                <span uk-icon="album"></span><span class="uk-text-middle"> 教程</span>
-            </a></li>
-            <li><a target="_blank" href="https://github.com/xian-wen/awesome-python3-webapp">
-                <span uk-icon="code"></span><span class="uk-text-middle"> 源码</span>
-            </a></li>
-        </ul>
-    </div>
-    <div class="uk-navbar-right uk-margin-right">
-        <ul class="uk-navbar-nav">
-            {% if __user__ %}
             <li>
-                <a href="#">
-                    <span uk-icon="user"></span><span class="uk-text-middle"> {{ __user__.name }}</span>
+                <a href="/">
+                    <i class="uk-icon-home"></i> 日志
                 </a>
-                <div class="uk-navbar-dropdown">
-                    <ul class="uk-nav uk-navbar-dropdown-nav">
-                        <li><a href="/signout">
-                            <span uk-icon="sign-out"></span><span class="uk-text-middle"> 退出</span>
-                        </a></li>
-                    </ul>
-                </div>
             </li>
-            {% else %}
-            <li><a href="/signin">
-                <span uk-icon="sign-in"></span><span class="uk-text-middle"> 登录</span>
-            </a></li>
-            <li><a href="/register">
-                <span uk-icon="file-edit"></span><span class="uk-text-middle"> 注册</span>
-            </a></li>
-            {% endif %}
+            <li>
+                <a target="_blank"
+                   href=""
+                >
+                    <i class="uk-icon-book"></i> 教程
+                </a>
+            </li>
+            <li>
+                <a target="_blank"
+                   href="https://github.com/xian-wen/awesome-python3-webapp"
+                >
+                    <i class="uk-icon-code"></i> 源码
+                </a>
+            </li>
         </ul>
+        <div class="uk-navbar-flip">
+            <ul class="uk-navbar-nav">
+                {% if __user__ %}
+                <li class="uk-parent" data-uk-dropdown>
+                    <a href="#0">
+                        <i class="uk-icon-user"></i> {{ __user__.name }}
+                    </a>
+                    <div class="uk-dropdown uk-dropdown-navbar">
+                        <ul class="uk-nav uk-nav-navbar">
+                            <li>
+                                <a href="/signout">
+                                    <i class="uk-icon-sign-out"></i> 退出
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                {% else %}
+                <li>
+                    <a href="/signin">
+                        <i class="uk-icon-sign-in"></i> 登录
+                    </a>
+                </li>
+                <li>
+                    <a href="/register">
+                        <i class="uk-icon-edit"></i> 注册
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
     </div>
 </nav>
 
-<div class="uk-container">
-    <div uk-grid>
+<div class="uk-container uk-container-center">
+    <div class="uk-grid">
         {% block content %}
         <!-- content -->
         {% endblock %}
     </div>
 </div>
 
-<div class="uk-margin-large-top" style="background-color: #eee; border-top: 1px solid #ccc;">
-    <div class="uk-container uk-text-center">
-        <div class="uk-margin-top uk-margin-bottom">
+<div class="uk-margin-large-top"
+     style="background-color: #eee; border-top: 1px solid #ccc;"
+>
+    <div class="uk-container uk-container-center uk-text-center">
+        <div class="uk-panel uk-margin-top uk-margin-bottom">
             <p>
-                <a target="_blank" href="https://github.com/xian-wen" class="uk-icon-button" uk-icon="github"></a>
-                <a target="_blank" href="" class="uk-icon-button" uk-icon="linkedin"></a>
-                <a target="_blank" href="" class="uk-icon-button" uk-icon="twitter"></a>
+                <a class="uk-icon-button uk-icon-weibo"
+                   target="_blank"
+                   href=""
+                ></a>
+                <a class="uk-icon-button uk-icon-github"
+                   target="_blank"
+                   href="https://github.com/xian-wen"
+                ></a>
+                <a class="uk-icon-button uk-icon-linkedin"
+                   target="_blank"
+                   href=""
+                ></a>
+                <a class="uk-icon-button uk-icon-twitter"
+                   target="_blank"
+                   href=""
+                ></a>
             </p>
-            <p>Powered by <a href="">Awesome Python Webapp</a>. Copyright &copy; 2021. [<a href="">Manage</a>]</p>
-            <p><a target="_blank" href="">www.yinxianwen.com</a>. All rights reserved.</p>
+            <p>
+                Powered by <a href="">Awesome Python Webapp</a>.
+                Copyright &copy; 2021.
+                [<a target="_blank" href="/manage/">Manage</a>]
+            </p>
+            <p>
+                <a target="_blank"
+                   href=""
+                >www.yinxianwen.com</a>.
+                All rights reserved.
+            </p>
+            <a target="_blank"
+               href="http://www.w3.org/TR/html5/"
+            >
+                <i class="uk-icon-html5"
+                   style="font-size:64px; color: #444;"
+                ></i>
+            </a>
         </div>
     </div>
 </div>

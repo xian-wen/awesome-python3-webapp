@@ -8,36 +8,51 @@
 {% endblock %}
 
 {% block content %}
-<div class="uk-width-3-4">
+<div class="uk-width-medium-3-4">
     {% for blog in blogs %}
     <article class="uk-article">
-        <h2><a href="/blog/{{ blog.id }}">{{ blog.name }}</a></h2>
+        <h1 class="uk-article-title">
+            <a href="/blog/{{ blog.id }}">{{ blog.name }}</a>
+        </h1>
         <p class="uk-article-meta">发表于{{ blog.created_at|datetime }}</p>
         <p>{{ blog.summary }}</p>
-        <p><a href="/blog/{{ blog.id }}">
-            <span class="uk-text-middle">继续阅读 </span><span uk-icon="chevron-double-right"></span>
-        </a></p>
+        <p>
+            <a href="/blog/{{ blog.id }}">
+                继续阅读 <i class="uk-icon-angle-double-right"></i>
+            </a>
+        </p>
     </article>
-    <hr>
     {% endfor %}
 </div>
 
-<div class="uk-width-1-4">
+<div class="uk-width-medium-1-4">
     <div class="uk-panel">
-        <h3>友情链接</h3>
-        <ul class="uk-list uk-list-divider">
-            <li><a target="_blank" href="">
-                <span uk-icon="link"></span><span class="uk-text-middle"> 编程</span>
-            </a></li>
-            <li><a target="_blank" href="">
-                <span uk-icon="link"></span><span class="uk-text-middle"> 读书</span>
-            </a></li>
-            <li><a target="_blank" href="">
-                <span uk-icon="link"></span><span class="uk-text-middle"> Python 教程</span>
-            </a></li>
-            <li><a target="_blank" href="">
-                <span uk-icon="link"></span><span class="uk-text-middle"> Git 教程</span>
-            </a></li>
+        <h3 class="uk-panel-title">友情链接</h3>
+        <ul class="uk-list uk-list-line">
+            <li>
+                <i class="uk-icon-thumbs-o-up"></i>
+                <a target="_blank"
+                   href=""
+                > 编程</a>
+            </li>
+            <li>
+                <i class="uk-icon-thumbs-o-up"></i>
+                <a target="_blank"
+                   href=""
+                > 读书</a>
+            </li>
+            <li>
+                <i class="uk-icon-thumbs-o-up"></i>
+                <a target="_blank"
+                   href=""
+                > Python 教程</a>
+            </li>
+            <li>
+                <i class="uk-icon-thumbs-o-up"></i>
+                <a target="_blank"
+                   href=""
+                > Git 教程</a>
+            </li>
         </ul>
     </div>
 </div>
